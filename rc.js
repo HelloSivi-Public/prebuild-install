@@ -51,6 +51,7 @@ module.exports = function (pkg) {
 
   rc.abi = napi.isNapiRuntime(rc.runtime) ? rc.target : getAbi(rc.target, rc.runtime)
 
+  console.log(JSON.stringify(rc, null, 2));
   return rc
 }
 
