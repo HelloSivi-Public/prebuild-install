@@ -5,6 +5,10 @@ var crypto = require('crypto')
 var expandTemplate = require('expand-template')()
 
 function getDownloadUrl (opts) {
+  console.log("pkgName: ", pkgName)
+  console.log("opts.pkg: ", opts.pkg)
+  console.log("opts.pkg.name: ", opts.pkg.name)
+  console.log("opts.pkg.version: ", opts.pkg.version)
   var pkgName = opts.pkg.name.replace(/^@[a-zA-Z0-9_\-.~]+\//, '')
   return expandTemplate(urlTemplate(opts), {
     name: pkgName,
@@ -65,7 +69,9 @@ function getEnvPrefix (pkgName) {
 }
 
 function getHostMirrorUrl (opts) {
+  console.log("getHostMirrorUrl - PKG NAME: ", opts.pkg.name);
   var propName = getEnvPrefix(opts.pkg.name) + '_binary_host'
+  console.log("getHostMirrorUrl - propName: ", propName);
   return process.env[propName] || process.env[propName + '_mirror']
 }
 
