@@ -10,6 +10,8 @@ var proxy = require('./proxy')
 var mkdirp = require('mkdirp-classic')
 
 function downloadPrebuild (downloadUrl, opts, cb) {
+  console.log("---- downloadUrl: ", downloadUrl);
+  console.log("---- opts: ", JSON.stringify(opts));
   var cachedPrebuild = util.cachedPrebuild(downloadUrl)
   var localPrebuild = util.localPrebuild(downloadUrl, opts)
   var tempFile = util.tempFile(cachedPrebuild)
