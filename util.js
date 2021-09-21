@@ -10,8 +10,7 @@ function getDownloadUrl (opts) {
   console.log("opts.pkg.name: ", opts.pkg.name)
   console.log("opts.pkg.version: ", opts.pkg.version)
   var pkgName = opts.pkg.name.replace(/^@[a-zA-Z0-9_\-.~]+\//, '')
-  pkgName = pkgName.replace(/-/g, ";;;;");
-  let response = expandTemplate(urlTemplate(opts), {
+  return expandTemplate(urlTemplate(opts), {
     name: pkgName,
     package_name: pkgName,
     version: opts.pkg.version,
@@ -30,7 +29,6 @@ function getDownloadUrl (opts) {
     module_name: opts.pkg.binary && opts.pkg.binary.module_name,
     tag_prefix: opts['tag-prefix']
   })
-  return response.replace(/;;;;/g,"-"); 
 }
 
 function getApiUrl (opts) {
