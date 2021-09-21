@@ -4,15 +4,18 @@ var proxy = require('./proxy')
 
 function findAssetId (opts, cb) {
   var downloadUrl = util.getDownloadUrl(opts)
+  console.log("===findAssetId downloadUrl: ", downloadUrl);
   var apiUrl = util.getApiUrl(opts)
+  console.log("===findAssetId apiUrl: ", apiUrl);
   var log = opts.log || util.noopLogger
 
   log.http('request', 'GET ' + apiUrl)
+  // curl -H "Authorization: token TOKEN" https://api.github.com/repos/hellosivi/sivi-text-node/releases // this is the call to make
   var reqOpts = proxy({
     url: apiUrl,
     json: true,
     headers: {
-      'User-Agent': 'simple-get',
+      // 'User-Agent': 'simple-get',
       Authorization: 'token ' + opts.token
     }
   }, opts)
