@@ -15,10 +15,12 @@ function findAssetId (opts, cb) {
     url: apiUrl,
     json: true,
     headers: {
-      // 'User-Agent': 'simple-get',
+      'User-Agent': 'simple-get',
       Authorization: 'token ' + opts.token
     }
   }, opts)
+
+  console.log("Req Opts: ", JSON.stringify(reqOpts, null, 2));
 
   var req = get.concat(reqOpts, function (err, res, data) {
     if (err) return cb(err)
