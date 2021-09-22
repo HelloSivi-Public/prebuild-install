@@ -16,6 +16,8 @@ function downloadPrebuild (downloadUrl, opts, cb) {
   var tempFile = util.tempFile(cachedPrebuild)
   var log = opts.log || util.noopLogger
 
+  console.log("opts.nolocal: ", opts.nolocal);
+
   if (opts.nolocal) return download()
 
   log.info('looking for local prebuild @', localPrebuild)
